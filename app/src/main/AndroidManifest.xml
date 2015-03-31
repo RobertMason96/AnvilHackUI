@@ -28,6 +28,14 @@
             android:name=".MainActivity22Activity"
             android:label="@string/title_activity_main_activity22" >
         </activity>
+        <activity
+            android:name=".MacroPage"
+            android:label="@string/title_activity_macro_page" >
+        </activity>
+        <activity
+            android:name=".TrailRolls"
+            android:label="@string/title_activity_trail_rolls" >
+        </activity>
     </application>
 
 </manifest>

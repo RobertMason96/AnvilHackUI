@@ -1,60 +1,29 @@
 package com.example.owner.anvilhackui;
 
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
-import com.example.owner.anvilhackui.R;
-import com.getpebble.android.kit.PebbleKit;
-import com.getpebble.android.kit.util.PebbleDictionary;
-import java.nio.charset.CharacterCodingException;
-import java.util.*;
 
-//GNU Terry Pratchett
-public class MainActivity extends ActionBarActivity {
+import java.util.Arrays;
 
-    private final static UUID PEBBLE_APP_UUID = UUID.fromString("20c769c4-5920-4e58-b1ad-4e47bd8a5fe0");
-    public final static String EXTRA_MESSAGE = "com.example.owner.anvilhackui.MESSAGE";
+
+public class TrailRolls extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        String text1 = getIntent().getStringExtra("ArollOutput");
-        TextView tx = (TextView) findViewById(R.id.textView);
-        tx.setText(text1);
-
-        String text2 = getIntent().getStringExtra("ArollOutput2");
-        TextView tx2 = (TextView) findViewById(R.id.textView2);
-        tx2.setText(text2);
-
-        String text3 = getIntent().getStringExtra("ArollOutput3");
-        TextView tx3 = (TextView) findViewById(R.id.textView3);
-        tx3.setText(text3);
-
-        String text4 = getIntent().getStringExtra("ArollOutput4");
-        TextView tx4 = (TextView) findViewById(R.id.textView4);
-        tx4.setText(text4);
-
-        String text5 = getIntent().getStringExtra("ArollOutput5");
-        EditText editText = (EditText) findViewById(R.id.rollTxt);
-        editText.setText(text5);
-
-
+        setContentView(R.layout.activity_trail_rolls);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_trail_rolls, menu);
         return true;
     }
 
@@ -73,98 +42,30 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void Roll(View view) {
 
-        TextView tx = (TextView) findViewById(R.id.textView);
-        if (tx.getText() != "") {
-            TextView tx2 = (TextView) findViewById(R.id.textView2);
-            if (tx2.getText() != "") {
-                TextView tx3 = (TextView) findViewById(R.id.textView3);
-                if (tx3.getText() != "") {
-                    TextView tx4 = (TextView) findViewById(R.id.textView4);
-                    tx4.setText(tx3.getText());
-                }
-                tx3.setText(tx2.getText());
-            }
-            tx2.setText(tx.getText());
-        }
-        EditText editText = (EditText) findViewById(R.id.rollTxt);
+    public void Roll(View view) {
+        TextView tx = (TextView) findViewById(R.id.rollOutput);
+        EditText editText = (EditText) findViewById(R.id.editText);
+
         String message = editText.getText().toString();
         Integer intResult = myMain(message);
         String testString = Integer.toString(intResult);
-        tx.setText(testString);
+
+        String text = (tx.getText() + testString + ",");
+        if (tx.getText() == ""){
+            tx.setMaxLines(1);
+            tx.setMaxLines(1);
+        }
+        else {
+            tx.setMaxLines(tx.getMaxLines() + 1);
+            tx.setMaxLines(tx.getMinLines() + 1);
+        }
+        tx.setText(text);
+
 
     }
 
-    public void bluetoothLayout(View view) {
-        PebbleKit.startAppOnPebble(getApplicationContext(), PEBBLE_APP_UUID);
 
-    }
-
-
-
-
-    public void MacrosLayout(View view){
-        String newString= getIntent().getStringExtra("mac");
-        String newString2= getIntent().getStringExtra("mac2");
-        String newString3= getIntent().getStringExtra("mac3");
-        String newString4= getIntent().getStringExtra("mac4");
-        String newString5= getIntent().getStringExtra("mac5");
-        String newString6= getIntent().getStringExtra("mac6");
-
-        TextView tx = (TextView) findViewById(R.id.textView);
-        Intent act3 = new Intent(getApplicationContext(),MainActivity22Activity.class);
-
-        act3.putExtra("macIn",newString);
-        act3.putExtra("macIn2",newString2);
-        act3.putExtra("macIn3",newString3);
-        act3.putExtra("macIn4",newString4);
-        act3.putExtra("macIn5",newString5);
-        act3.putExtra("macIn6",newString6);
-
-
-        String rollOutput = tx.getText().toString();
-        act3.putExtra("tx",rollOutput);
-        TextView tx2 = (TextView) findViewById(R.id.textView2);
-        String rollOutput2 = tx2.getText().toString();
-        act3.putExtra("tx2",rollOutput2);
-        TextView tx3 = (TextView) findViewById(R.id.textView3);
-        String rollOutput3 = tx3.getText().toString();
-        act3.putExtra("tx3",rollOutput3);
-        TextView tx4 = (TextView) findViewById(R.id.textView4);
-        String rollOutput4 = tx4.getText().toString();
-        act3.putExtra("tx4",rollOutput4);
-        EditText editText = (EditText) findViewById(R.id.rollTxt);
-        String rollOutput5 = editText.getText().toString();
-        act3.putExtra("tx5",rollOutput5);
-        startActivity(act3);
-    }
-
-    public void setLayoutTrail(View view){
-        Intent trail = new Intent(getApplicationContext(),TrailRolls.class);
-        startActivity(trail);
-    }
-
-
-    public void SwapLayout(View view){
-        TextView tx = (TextView) findViewById(R.id.textView);
-        Intent act2 = new Intent(getApplicationContext(),MainActivity2Activity.class);
-        String rollOutput = tx.getText().toString();
-        act2.putExtra("tx",rollOutput);
-        TextView tx2 = (TextView) findViewById(R.id.textView2);
-        String rollOutput2 = tx2.getText().toString();
-        act2.putExtra("tx2",rollOutput2);
-        TextView tx3 = (TextView) findViewById(R.id.textView3);
-        String rollOutput3 = tx3.getText().toString();
-        act2.putExtra("tx3",rollOutput3);
-        TextView tx4 = (TextView) findViewById(R.id.textView4);
-        String rollOutput4 = tx4.getText().toString();
-        act2.putExtra("tx4",rollOutput4);
-        EditText editText = (EditText) findViewById(R.id.rollTxt);
-        String rollOutput5 = editText.getText().toString();
-        act2.putExtra("tx5",rollOutput5);
-        startActivity(act2);
-    }
 
 
     public static int myMain(String input)
@@ -389,6 +290,4 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
-
 }
-
