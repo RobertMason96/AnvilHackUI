@@ -1,5 +1,6 @@
 package com.example.owner.anvilhackui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.io.File;
 
 
 public class MainActivity22Activity extends ActionBarActivity {
@@ -212,6 +215,7 @@ public class MainActivity22Activity extends ActionBarActivity {
             TextView tx2 = (TextView) findViewById(R.id.textView7);
             tx.setText(Title);
             tx2.setText(Macro);
+            File file = new File(context.getFilesDir(), "Macros");
         }
         else if (macroSelected==2){
             TextView tx = (TextView) findViewById(R.id.textView8);

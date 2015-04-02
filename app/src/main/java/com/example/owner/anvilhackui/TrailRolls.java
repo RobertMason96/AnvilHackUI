@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.Arrays;
@@ -17,8 +18,10 @@ public class TrailRolls extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trail_rolls);
-    }
 
+
+    }
+    public int NumberVerse = 0;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -44,28 +47,118 @@ public class TrailRolls extends ActionBarActivity {
 
 
     public void Roll(View view) {
+    ScrollView scroll = (ScrollView) findViewById(R.id.scrollView);
         TextView tx = (TextView) findViewById(R.id.rollOutput);
         EditText editText = (EditText) findViewById(R.id.editText);
-
+        //String message = RickRoll(NumberVerse);
         String message = editText.getText().toString();
         Integer intResult = myMain(message);
         String testString = Integer.toString(intResult);
-
-        String text = (tx.getText() + testString + ",");
-        if (tx.getText() == ""){
-            tx.setMaxLines(1);
-            tx.setMaxLines(1);
-        }
-        else {
-            tx.setMaxLines(tx.getMaxLines() + 1);
-            tx.setMaxLines(tx.getMinLines() + 1);
-        }
+        //NumberVerse = NumberVerse + 1;
+        String text = (tx.getText() + testString + "\n");
         tx.setText(text);
-
+        scroll.fullScroll(View.FOCUS_DOWN);
 
     }
 
+    public static String RickRoll(int Verse) {
+        if (Verse ==0){
+            return("Oooh");
+        }
+        else if (Verse == 1) {
+            return ("We're no strangers to love\n" +
+                    "You know the rules and so do I\n" +
+                    "A full commitment's what I'm thinking of\n" +
+                    "You wouldn't get this from any other guy");
+        }
+        else if (Verse == 2) {
+            return ("I just wanna tell you how I'm feeling\n" +
+                    "Gotta make you understand");
+        }
+        else if (Verse == 3) {
+            return ("Never gonna give you up\n" +
+                    "Never gonna let you down\n" +
+                    "Never gonna run around and desert you\n" +
+                    "Never gonna make you cry\n" +
+                    "Never gonna say goodbye\n" +
+                    "Never gonna tell a lie and hurt you");
+        }
+        else if (Verse == 4) {
+            return ("We've known each other for so long\n" +
+                    "Your heart's been aching, but\n" +
+                    "You're too shy to say it\n" +
+                    "Inside, we both know what's been going on\n" +
+                    "We know the game and we're gonna play it");
+        }
+        else if (Verse == 5) {
+            return ("And if you ask me how I'm feeling\n" +
+                    "Don't tell me you're too blind to see");
+        }
+        else if (Verse == 6) {
+            return ("Never gonna give you up\n" +
+                    "Never gonna let you down\n" +
+                    "Never gonna run around and desert you\n" +
+                    "Never gonna make you cry\n" +
+                    "Never gonna say goodbye\n" +
+                    "Never gonna tell a lie and hurt you");
 
+        }
+        else if (Verse == 7) {
+            return ("Never gonna give you up\n" +
+                    "Never gonna let you down\n" +
+                    "Never gonna run around and desert you\n" +
+                    "Never gonna make you cry\n" +
+                    "Never gonna say goodbye\n" +
+                    "Never gonna tell a lie and hurt you\n");
+        }
+        else if (Verse == 8){
+            return ("(Ooh, give you up)\n" +
+                    "(Ooh, give you up)\n" +
+                    "Never gonna give, never gonna give\n" +
+                    "(Give you up)\n" +
+                    "Never gonna give, never gonna give\n" +
+                    "(Give you up)");
+         }
+        else if (Verse==9){
+            return("We've known each other for so long\n" +
+                    "Your heart's been aching, but\n" +
+                    "You're too shy to say it\n" +
+                    "Inside, we both know what's been going on\n" +
+                    "We know the game and we're gonna play it");
+
+        }
+        else if (Verse==10){
+            return("I just wanna tell you how I'm feeling\n" +
+                    "Gotta make you understand");
+        }
+        else if (Verse==11){
+            return("Never gonna give you up\n" +
+                    "Never gonna let you down\n" +
+                    "Never gonna run around and desert you\n" +
+                    "Never gonna make you cry\n" +
+                    "Never gonna say goodbye\n" +
+                    "Never gonna tell a lie and hurt you");
+        }
+        else if (Verse==12) {
+            return ("Never gonna give you up\n" +
+                    "Never gonna let you down\n" +
+                    "Never gonna run around and desert you\n" +
+                    "Never gonna make you cry\n" +
+                    "Never gonna say goodbye\n" +
+                    "Never gonna tell a lie and hurt you");
+        }
+        else if (Verse==13) {
+            return ("Never gonna give you up\n" +
+                    "Never gonna let you down\n" +
+                    "Never gonna run around and desert you\n" +
+                    "Never gonna make you cry\n" +
+                    "Never gonna say goodbye\n" +
+                    "Never gonna tell a lie and hurt you");
+        }
+        else {
+            return("I am just a humble runtime environment");
+        }
+    }
 
 
     public static int myMain(String input)

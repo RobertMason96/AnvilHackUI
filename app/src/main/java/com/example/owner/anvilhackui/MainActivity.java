@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.example.owner.anvilhackui.R;
 import com.getpebble.android.kit.PebbleKit;
 import com.getpebble.android.kit.util.PebbleDictionary;
+
+
 import java.nio.charset.CharacterCodingException;
 import java.util.*;
 
@@ -73,28 +75,6 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void Roll(View view) {
-
-        TextView tx = (TextView) findViewById(R.id.textView);
-        if (tx.getText() != "") {
-            TextView tx2 = (TextView) findViewById(R.id.textView2);
-            if (tx2.getText() != "") {
-                TextView tx3 = (TextView) findViewById(R.id.textView3);
-                if (tx3.getText() != "") {
-                    TextView tx4 = (TextView) findViewById(R.id.textView4);
-                    tx4.setText(tx3.getText());
-                }
-                tx3.setText(tx2.getText());
-            }
-            tx2.setText(tx.getText());
-        }
-        EditText editText = (EditText) findViewById(R.id.rollTxt);
-        String message = editText.getText().toString();
-        Integer intResult = myMain(message);
-        String testString = Integer.toString(intResult);
-        tx.setText(testString);
-
-    }
 
     public void bluetoothLayout(View view) {
         PebbleKit.startAppOnPebble(getApplicationContext(), PEBBLE_APP_UUID);
@@ -145,6 +125,28 @@ public class MainActivity extends ActionBarActivity {
         startActivity(trail);
     }
 
+    public void Roll(View view) {
+
+        TextView tx = (TextView) findViewById(R.id.textView);
+        if (tx.getText() != "") {
+            TextView tx2 = (TextView) findViewById(R.id.textView2);
+            if (tx2.getText() != "") {
+                TextView tx3 = (TextView) findViewById(R.id.textView3);
+                if (tx3.getText() != "") {
+                    TextView tx4 = (TextView) findViewById(R.id.textView4);
+                    tx4.setText(tx3.getText());
+                }
+                tx3.setText(tx2.getText());
+            }
+            tx2.setText(tx.getText());
+        }
+        EditText editText = (EditText) findViewById(R.id.rollTxt);
+        String message = editText.getText().toString();
+        Integer intResult = myMain(message);
+        String testString = Integer.toString(intResult);
+        tx.setText(testString);
+
+    }
 
     public void SwapLayout(View view){
         TextView tx = (TextView) findViewById(R.id.textView);
@@ -258,120 +260,100 @@ public class MainActivity extends ActionBarActivity {
         return sum;
     }
 
-    public static int eval(int [] vals,String mod)
-    {
-        if (mod.length() == 0)
-        {
+    public static int eval(int[] vals, String mod) {
+        if (mod.length() == 0) {
             return sum(vals);
         } else {
-            String modchar="";
-            switch(mod.charAt(0))
-            {
-                case('h'):
-                case('H'):
-                    vals[vals.length -1] = -255;
+            String modchar = "";
+            switch (mod.charAt(0)) {
+                case ('h'):
+                case ('H'):
                     Arrays.sort(vals);
-                    mod = mod.substring(1);
-                    break;
-                case('l'):
-                case('L'):
-                    for(int i=0;i<vals.length;i++)
-                    {
-                        if (vals[i] != -255)
-                        {
-                            vals[i] = -255;
-                            break;
-                        }
+                    for (int x = 0; x < (vals.length - 1); x++) {
+                        vals[x] = -255;
                     }
                     mod = mod.substring(1);
                     break;
-                case('d'):
-                case('D'):
-                    modchar = getNextInt(mod.substring(1));
-                    int modint = Integer.parseInt(modchar);
-                    for(int i = 1; i < modint+1; i++)
-                    {
-                        vals[ vals.length - i ] = -255;
-                    }
+                case ('l'):
+                case ('L'):
                     Arrays.sort(vals);
-                    mod = mod.substring(1+modchar.length());
+                    for (int x = 1; x < (vals.length); x++) {
+                        vals[x] = -255;
+                    }
+                    mod = mod.substring(1);
                     break;
-                case('k'):
-                case('K'):
+                case ('k'):
+                case ('K'):
                     modchar = getNextInt(mod.substring(1));
-                    int x = 0;
-                    while(vals[x] != -255)
-                    {
-                        x++;
-                    }
-                    for(int i = x; i< (x + vals.length - Integer.parseInt(modchar));i++)
-                    {
-                        vals[i] = -255;
-                    }
                     Arrays.sort(vals);
-                    mod = mod.substring(1+modchar.length());
+                    for (int x = 0; x < vals.length - Integer.parseInt(modchar); x++) {
+                        vals[x] = -255;
+                    }
+                    mod = mod.substring(1 + modchar.length());
                     break;
-                case('>'):
+                case ('d'):
+                case ('D'):
                     modchar = getNextInt(mod.substring(1));
-                    int totalgrater = 0;
-                    for (int i = 0; i<vals.length;i++)
-                    {
-                        if (vals[i]>Integer.parseInt(modchar))
-                        {
-                            totalgrater++;
+                    Arrays.sort(vals);
+                    for (int x = Integer.parseInt(modchar); x< vals.length; x++) {
+                        vals[x] = -255;
+                    }
+                    mod = mod.substring(1 + modchar.length());
+                    break;
+                case ('>'):
+                    modchar = getNextInt(mod.substring(1));
+                    int totalGreater = 0;
+                    for (int i = 0; i < vals.length; i++) {
+                        if (vals[i] > Integer.parseInt(modchar)) {
+                            totalGreater++;
                         }
                         vals[i] = -255;
                     }
-                    vals[vals.length-1] = totalgrater;
-                    mod = mod.substring(1+modchar.length());
+                    vals[vals.length - 1] = totalGreater;
+                    mod = mod.substring(1 + modchar.length());
                     break;
-                case('<'):
+                case ('<'):
                     modchar = getNextInt(mod.substring(1));
                     int totalless = 0;
-                    for (int i = 0; i<vals.length;i++)
-                    {
-                        if (vals[i]<Integer.parseInt(modchar)&&vals[i]!=-255)
-                        {
+                    for (int i = 0; i < vals.length; i++) {
+                        if (vals[i] < Integer.parseInt(modchar) && vals[i] != -255) {
                             totalless++;
                         }
                         vals[i] = -255;
                     }
-                    vals[vals.length-1] = totalless;
-                    mod = mod.substring(1+modchar.length());
+                    vals[vals.length - 1] = totalless;
+                    mod = mod.substring(1 + modchar.length());
                     break;
-                case('+'):
+                case ('+'):
                     modchar = getNextInt(mod.substring(1));
                     int adder = sum(vals) + Integer.parseInt(modchar);
-                    for (int i = 0; i<vals.length;i++)
-                    {
-                        if(vals[i] != -255)
-                        {
-                            vals[i]=-255;
+                    for (int i = 0; i < vals.length; i++) {
+                        if (vals[i] != -255) {
+                            vals[i] = -255;
                         }
                     }
-                    vals[vals.length-1] = adder;
-                    mod = mod.substring(1+modchar.length());
+                    vals[vals.length - 1] = adder;
+                    mod = mod.substring(1 + modchar.length());
                     break;
-                case('-'):
+                case ('-'):
                     modchar = getNextInt(mod.substring(1));
                     int subber = sum(vals) - Integer.parseInt(modchar);
-                    for (int i = 0; i<vals.length;i++)
-                    {
-                        if(vals[i] != -255)
-                        {
-                            vals[i]=-255;
+                    for (int i = 0; i < vals.length; i++) {
+                        if (vals[i] != -255) {
+                            vals[i] = -255;
                         }
                     }
-                    vals[vals.length-1] = subber;
-                    mod = mod.substring(1+modchar.length());
+                    vals[vals.length - 1] = subber;
+                    mod = mod.substring(1 + modchar.length());
                     break;
                 default:
                     return -255;
             }
         }
-
         return eval(vals,mod);
     }
+
+
 
     public static String getNextInt(String mod)
     {
