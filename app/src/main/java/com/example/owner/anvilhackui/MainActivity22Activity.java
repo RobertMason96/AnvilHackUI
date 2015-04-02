@@ -215,7 +215,7 @@ public class MainActivity22Activity extends ActionBarActivity {
             TextView tx2 = (TextView) findViewById(R.id.textView7);
             tx.setText(Title);
             tx2.setText(Macro);
-            File file = new File(context.getFilesDir(), "Macros");
+            //File file = new File(context.getFilesDir(), "Macros");
         }
         else if (macroSelected==2){
             TextView tx = (TextView) findViewById(R.id.textView8);
