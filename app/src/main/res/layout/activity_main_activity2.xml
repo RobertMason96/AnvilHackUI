@@ -19,10 +19,41 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/HelpText"
-        android:id="@+id/textView5"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="18pt"
+        android:text="Help"
+        android:id="@+id/textView14"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/scrollView5"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView14"
+        android:layout_above="@+id/button"
+        android:layout_alignParentEnd="true">
+
+        <TextView
+            android:id="@+id/TextView5"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/HelpText"
+            android:background="@android:color/white"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_below="@+id/textView14"
+            android:layout_alignParentEnd="true"
+            android:layout_above="@+id/button" />
+
+    </ScrollView>
+
+
+
+
 
 </RelativeLayout>

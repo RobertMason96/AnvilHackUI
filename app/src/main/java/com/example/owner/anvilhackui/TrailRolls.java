@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import java.util.Calendar;
 
 import java.util.Arrays;
 
@@ -47,14 +48,25 @@ public class TrailRolls extends ActionBarActivity {
 
 
     public void Roll(View view) {
-    ScrollView scroll = (ScrollView) findViewById(R.id.scrollView);
+        ScrollView scroll = (ScrollView) findViewById(R.id.scrollView);
         TextView tx = (TextView) findViewById(R.id.rollOutput);
         EditText editText = (EditText) findViewById(R.id.editText);
-        //String message = RickRoll(NumberVerse);
-        String message = editText.getText().toString();
-        Integer intResult = myMain(message);
-        String testString = Integer.toString(intResult);
-        //NumberVerse = NumberVerse + 1;
+        Calendar c = Calendar.getInstance();
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        int month = c.get(Calendar.MONTH);
+        String testString = "";
+        if (day == 1 && month == 3){
+            String message = RickRoll(NumberVerse);
+            NumberVerse = NumberVerse + 1;
+            if(NumberVerse>13){
+                NumberVerse = 1;
+            }
+            testString = message;
+        } else {
+            String message = editText.getText().toString();
+            int intResult = myMain(message);
+            testString = Integer.toString(intResult);
+        }
         String text = (tx.getText() + testString + "\n");
         tx.setText(text);
         scroll.fullScroll(View.FOCUS_DOWN);
@@ -156,7 +168,7 @@ public class TrailRolls extends ActionBarActivity {
                     "Never gonna tell a lie and hurt you");
         }
         else {
-            return("I am just a humble runtime environment");
+            return ("Oooh");
         }
     }
 

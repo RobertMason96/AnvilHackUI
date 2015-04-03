@@ -40,6 +40,7 @@ public class MainActivity2Activity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
     public void SwapLayout(View view){
         Intent act1 = new Intent(getApplicationContext(),MainActivity.class);
         String newString= getIntent().getStringExtra("tx");

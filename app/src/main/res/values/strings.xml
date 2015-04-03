@@ -6,7 +6,23 @@
     <string name="title_activity_display_message">"My Message "</string>
     <string name="textHint">Roll Will Appear Here</string>
     <string name="title_activity_main_activity2">MainActivity2Activity</string>
-    <string name="HelpText">This program allows you to roll dice. It also contains macro options which allow you to roll common rolls more easily. The syntaxt for rolls is as such: type \'#d#\' for a simple roll where the first # is the number of a dice and the second is the number of sides, i.e. \'3d6\' rolls 3 six sided dice. If you want to roll more than one different die on a single roll and add these, or take one from the other you can simply put the two rolls in the form of \'#d# + #d#\' where there is a space either side of the plus or minus. The #d# can be followed by a set of modifiers in the form of a string of varying length. there must not be a space between the second # and the modifiers. These modifiers have varied effects. Some of them are listed below: h This will remove highest value of the roll, leaving all other rolls. l This will remove lowest value of of the roll, leaving all other rolls. d# This will remove the # highest values from the roll (i.e d2 will remove the 2 highest values). k# This will remove the # lowest values from the roll. ># Returns the number of die values above #. &lt;# Returns the number of die values above #. +# or -# Adds/subtracts # to the final value of the roll (it will add successes to a &gt;# feature or add # to the value of a d20 roll, for example).</string>
+    <string name="HelpText"> The syntax for rolls is as such: type \'#d#\' for a simple roll where the first # is the number of a dice and the second is the number of sides, i.e. \'3d6\' rolls 3 six sided dice.
+        \n    Roll more than one different die on a single roll use \'#d# + #d#\' where there is a space either side of the plus or minus.
+        \n    The #d# can be followed by a set of modifiers in the form of a string of varying length. No space between the second # and the modifiers.
+        \n
+        \n &#x2022;  H or h  - will keep the top value of all the dice rolls.
+        \n
+        \n &#x2022;  L or l  - will keep lowest value of the roll, removing all other rolls.
+        \n
+        \n &#x2022;  D# or d# - will keep the # lowest values from the roll removing the others.
+        \n
+        \n &#x2022;  K# or k# - will keep the # highest values from the roll.
+        \n
+        \n &#x2022;  &lt;# - will return the number of die values above #.
+        \n
+        \n &#x2022;  &gt;# will return the number of die values above #.
+        \n
+        \n &#x2022;  +# or -# - will add/subtract # to the value</string>
     <string name="title_activity_main_activity22">MainActivity22Activity</string>
     <string name="title_activity_macro_page">MacroPage</string>
     <string name="title_activity_trail_rolls">TrailRolls</string>
