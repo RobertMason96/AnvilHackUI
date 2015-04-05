@@ -18,9 +18,9 @@
         \n
         \n &#x2022;  K# or k# - will keep the # highest values from the roll.
         \n
-        \n &#x2022;  &lt;# - will return the number of die values above #.
+        \n &#x2022;  &gt;# - will return the number of die values above #.
         \n
-        \n &#x2022;  &gt;# will return the number of die values above #.
+        \n &#x2022;  &lt;# will return the number of die values above #.
         \n
         \n &#x2022;  +# or -# - will add/subtract # to the value</string>
     <string name="title_activity_main_activity22">MainActivity22Activity</string>
