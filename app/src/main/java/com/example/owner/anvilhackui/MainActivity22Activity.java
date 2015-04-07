@@ -77,14 +77,10 @@ public class MainActivity22Activity extends ActionBarActivity {
 
 
         String newString= getIntent().getStringExtra("tx");
-        String newString2= getIntent().getStringExtra("tx2");
-        String newString3= getIntent().getStringExtra("tx3");
-        String newString4= getIntent().getStringExtra("tx4");
+
         String newString5= getIntent().getStringExtra("tx5");
         act1.putExtra("ArollOutput",newString);
-        act1.putExtra("ArollOutput2",newString2);
-        act1.putExtra("ArollOutput3",newString3);
-        act1.putExtra("ArollOutput4",newString4);
+
         act1.putExtra("ArollOutput5",newString5);
 
         String rollOutput = tx.getText().toString();
@@ -115,14 +111,10 @@ public class MainActivity22Activity extends ActionBarActivity {
 
 
             String newString= getIntent().getStringExtra("tx");
-            String newString2= getIntent().getStringExtra("tx2");
-            String newString3= getIntent().getStringExtra("tx3");
-            String newString4= getIntent().getStringExtra("tx4");
+
             String newString5 = "NaaN";
             act1.putExtra("ArollOutput",newString);
-            act1.putExtra("ArollOutput2",newString2);
-            act1.putExtra("ArollOutput3",newString3);
-            act1.putExtra("ArollOutput4",newString4);
+
 
 
             if (macroSelected == 1){

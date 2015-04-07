@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import com.example.owner.anvilhackui.R;
 import com.getpebble.android.kit.PebbleKit;
@@ -33,17 +34,6 @@ public class MainActivity extends ActionBarActivity {
         TextView tx = (TextView) findViewById(R.id.textView);
         tx.setText(text1);
 
-        String text2 = getIntent().getStringExtra("ArollOutput2");
-        TextView tx2 = (TextView) findViewById(R.id.textView2);
-        tx2.setText(text2);
-
-        String text3 = getIntent().getStringExtra("ArollOutput3");
-        TextView tx3 = (TextView) findViewById(R.id.textView3);
-        tx3.setText(text3);
-
-        String text4 = getIntent().getStringExtra("ArollOutput4");
-        TextView tx4 = (TextView) findViewById(R.id.textView4);
-        tx4.setText(text4);
 
         String text5 = getIntent().getStringExtra("ArollOutput5");
         EditText editText = (EditText) findViewById(R.id.rollTxt);
@@ -105,15 +95,7 @@ public class MainActivity extends ActionBarActivity {
 
         String rollOutput = tx.getText().toString();
         act3.putExtra("tx",rollOutput);
-        TextView tx2 = (TextView) findViewById(R.id.textView2);
-        String rollOutput2 = tx2.getText().toString();
-        act3.putExtra("tx2",rollOutput2);
-        TextView tx3 = (TextView) findViewById(R.id.textView3);
-        String rollOutput3 = tx3.getText().toString();
-        act3.putExtra("tx3",rollOutput3);
-        TextView tx4 = (TextView) findViewById(R.id.textView4);
-        String rollOutput4 = tx4.getText().toString();
-        act3.putExtra("tx4",rollOutput4);
+
         EditText editText = (EditText) findViewById(R.id.rollTxt);
         String rollOutput5 = editText.getText().toString();
         act3.putExtra("tx5",rollOutput5);
@@ -125,43 +107,146 @@ public class MainActivity extends ActionBarActivity {
         startActivity(trail);
     }
 
+    public int NumberVerse = 0;
     public void Roll(View view) {
-
+        String text = "";
+        ScrollView scroll = (ScrollView) findViewById(R.id.scrollView);
         TextView tx = (TextView) findViewById(R.id.textView);
-        if (tx.getText() != "") {
-            TextView tx2 = (TextView) findViewById(R.id.textView2);
-            if (tx2.getText() != "") {
-                TextView tx3 = (TextView) findViewById(R.id.textView3);
-                if (tx3.getText() != "") {
-                    TextView tx4 = (TextView) findViewById(R.id.textView4);
-                    tx4.setText(tx3.getText());
-                }
-                tx3.setText(tx2.getText());
-            }
-            tx2.setText(tx.getText());
-        }
         EditText editText = (EditText) findViewById(R.id.rollTxt);
-        String message = editText.getText().toString();
-        Integer intResult = myMain(message);
-        String testString = Integer.toString(intResult);
-        tx.setText(testString);
+        Calendar c = Calendar.getInstance();
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        int month = c.get(Calendar.MONTH);
+        String testString = "";
+        if (day == 1 && month == 3){
+            text = RickRoll(NumberVerse);
+            NumberVerse = NumberVerse + 1;
+            if(NumberVerse>13){
+                NumberVerse = 1;
+            }
+            testString = text;
+        } else if (((day==5 && month ==4)||(day==6 && month ==1)|| (day==30 && month==4)) && NumberVerse==0) {
+            NumberVerse = NumberVerse + 1;
+            text = "Happy Birthday";
 
+        } else {
+            String message = editText.getText().toString();
+            int intResult = myMain(message);
+            testString = Integer.toString(intResult);
+            text = (tx.getText() + testString + "\n");
+        }
+
+        tx.setText(text);
+        scroll.fullScroll(View.FOCUS_DOWN);
     }
+
+
+    public static String RickRoll(int Verse) {
+        if (Verse ==0){
+            return("Oooh");
+        }
+        else if (Verse == 1) {
+            return ("We're no strangers to love\n" +
+                    "You know the rules and so do I\n" +
+                    "A full commitment's what I'm thinking of\n" +
+                    "You wouldn't get this from any other guy");
+        }
+        else if (Verse == 2) {
+            return ("I just wanna tell you how I'm feeling\n" +
+                    "Gotta make you understand");
+        }
+        else if (Verse == 3) {
+            return ("Never gonna give you up\n" +
+                    "Never gonna let you down\n" +
+                    "Never gonna run around and desert you\n" +
+                    "Never gonna make you cry\n" +
+                    "Never gonna say goodbye\n" +
+                    "Never gonna tell a lie and hurt you");
+        }
+        else if (Verse == 4) {
+            return ("We've known each other for so long\n" +
+                    "Your heart's been aching, but\n" +
+                    "You're too shy to say it\n" +
+                    "Inside, we both know what's been going on\n" +
+                    "We know the game and we're gonna play it");
+        }
+        else if (Verse == 5) {
+            return ("And if you ask me how I'm feeling\n" +
+                    "Don't tell me you're too blind to see");
+        }
+        else if (Verse == 6) {
+            return ("Never gonna give you up\n" +
+                    "Never gonna let you down\n" +
+                    "Never gonna run around and desert you\n" +
+                    "Never gonna make you cry\n" +
+                    "Never gonna say goodbye\n" +
+                    "Never gonna tell a lie and hurt you");
+
+        }
+        else if (Verse == 7) {
+            return ("Never gonna give you up\n" +
+                    "Never gonna let you down\n" +
+                    "Never gonna run around and desert you\n" +
+                    "Never gonna make you cry\n" +
+                    "Never gonna say goodbye\n" +
+                    "Never gonna tell a lie and hurt you\n");
+        }
+        else if (Verse == 8){
+            return ("(Ooh, give you up)\n" +
+                    "(Ooh, give you up)\n" +
+                    "Never gonna give, never gonna give\n" +
+                    "(Give you up)\n" +
+                    "Never gonna give, never gonna give\n" +
+                    "(Give you up)");
+        }
+        else if (Verse==9){
+            return("We've known each other for so long\n" +
+                    "Your heart's been aching, but\n" +
+                    "You're too shy to say it\n" +
+                    "Inside, we both know what's been going on\n" +
+                    "We know the game and we're gonna play it");
+
+        }
+        else if (Verse==10){
+            return("I just wanna tell you how I'm feeling\n" +
+                    "Gotta make you understand");
+        }
+        else if (Verse==11){
+            return("Never gonna give you up\n" +
+                    "Never gonna let you down\n" +
+                    "Never gonna run around and desert you\n" +
+                    "Never gonna make you cry\n" +
+                    "Never gonna say goodbye\n" +
+                    "Never gonna tell a lie and hurt you");
+        }
+        else if (Verse==12) {
+            return ("Never gonna give you up\n" +
+                    "Never gonna let you down\n" +
+                    "Never gonna run around and desert you\n" +
+                    "Never gonna make you cry\n" +
+                    "Never gonna say goodbye\n" +
+                    "Never gonna tell a lie and hurt you");
+        }
+        else if (Verse==13) {
+            return ("Never gonna give you up\n" +
+                    "Never gonna let you down\n" +
+                    "Never gonna run around and desert you\n" +
+                    "Never gonna make you cry\n" +
+                    "Never gonna say goodbye\n" +
+                    "Never gonna tell a lie and hurt you");
+        }
+        else {
+            return ("Oooh");
+        }
+    }
+
+
 
     public void SwapLayout(View view){
         TextView tx = (TextView) findViewById(R.id.textView);
         Intent act2 = new Intent(getApplicationContext(),MainActivity2Activity.class);
         String rollOutput = tx.getText().toString();
         act2.putExtra("tx",rollOutput);
-        TextView tx2 = (TextView) findViewById(R.id.textView2);
-        String rollOutput2 = tx2.getText().toString();
-        act2.putExtra("tx2",rollOutput2);
-        TextView tx3 = (TextView) findViewById(R.id.textView3);
-        String rollOutput3 = tx3.getText().toString();
-        act2.putExtra("tx3",rollOutput3);
-        TextView tx4 = (TextView) findViewById(R.id.textView4);
-        String rollOutput4 = tx4.getText().toString();
-        act2.putExtra("tx4",rollOutput4);
+
         EditText editText = (EditText) findViewById(R.id.rollTxt);
         String rollOutput5 = editText.getText().toString();
         act2.putExtra("tx5",rollOutput5);

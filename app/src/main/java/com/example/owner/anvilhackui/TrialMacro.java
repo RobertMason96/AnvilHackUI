@@ -1,28 +1,24 @@
 package com.example.owner.anvilhackui;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
 
-public class MainActivity2Activity extends ActionBarActivity {
-    
+public class TrialMacro extends ActionBarActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_main_activity2);
+        setContentView(R.layout.activity_trial_macro);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main_activity2, menu);
+        getMenuInflater().inflate(R.menu.menu_trial_macro, menu);
         return true;
     }
 
@@ -40,17 +36,4 @@ public class MainActivity2Activity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    public void SwapLayout(View view){
-        Intent act1 = new Intent(getApplicationContext(),MainActivity.class);
-        String newString= getIntent().getStringExtra("tx");
-
-        String newString5= getIntent().getStringExtra("tx5");
-        act1.putExtra("ArollOutput",newString);
-
-        act1.putExtra("ArollOutput5",newString5);
-        startActivity(act1);
-    }
-
-
 }

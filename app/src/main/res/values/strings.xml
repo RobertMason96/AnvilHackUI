@@ -26,4 +26,5 @@
     <string name="title_activity_main_activity22">MainActivity22Activity</string>
     <string name="title_activity_macro_page">MacroPage</string>
     <string name="title_activity_trail_rolls">TrailRolls</string>
+    <string name="title_activity_trial_macro">TrialMacro</string>
 </resources>
