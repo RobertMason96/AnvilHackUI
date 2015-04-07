@@ -1,6 +1,5 @@
 package com.example.owner.anvilhackui;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -11,15 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.io.File;
 
-
-public class MainActivity22Activity extends ActionBarActivity {
+public class main_macro_screen extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_activity22);
+        setContentView(R.layout.activity_main_macro_screen);
 
         String text1 = getIntent().getStringExtra("macIn");
         TextView tx = (TextView) findViewById(R.id.textView6);
@@ -50,7 +47,7 @@ public class MainActivity22Activity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main_activity22, menu);
+        getMenuInflater().inflate(R.menu.menu_main_macro_screen, menu);
         return true;
     }
 

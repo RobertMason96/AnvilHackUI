@@ -58,7 +58,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="Trial Roll"
         android:id="@+id/button5"
         android:layout_alignParentTop="true"
         android:layout_alignEnd="@+id/btBtn"

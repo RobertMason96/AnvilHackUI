@@ -1,23 +1,18 @@
 package com.example.owner.anvilhackui;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import com.example.owner.anvilhackui.R;
+
 import com.getpebble.android.kit.PebbleKit;
-import com.getpebble.android.kit.util.PebbleDictionary;
 
 
-import java.nio.charset.CharacterCodingException;
 import java.util.*;
 
 //GNU Terry Pratchett
@@ -83,7 +78,7 @@ public class MainActivity extends ActionBarActivity {
         String newString6= getIntent().getStringExtra("mac6");
 
         TextView tx = (TextView) findViewById(R.id.textView);
-        Intent act3 = new Intent(getApplicationContext(),MainActivity22Activity.class);
+        Intent act3 = new Intent(getApplicationContext(),main_macro_screen.class);
 
         act3.putExtra("macIn",newString);
         act3.putExtra("macIn2",newString2);
@@ -243,7 +238,7 @@ public class MainActivity extends ActionBarActivity {
 
     public void SwapLayout(View view){
         TextView tx = (TextView) findViewById(R.id.textView);
-        Intent act2 = new Intent(getApplicationContext(),MainActivity2Activity.class);
+        Intent act2 = new Intent(getApplicationContext(),help_screen.class);
         String rollOutput = tx.getText().toString();
         act2.putExtra("tx",rollOutput);
 

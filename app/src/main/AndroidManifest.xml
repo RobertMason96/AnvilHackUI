@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity2Activity"
+            android:name=".help_screen"
             android:label="@string/title_activity_main_activity2"
             android:parentActivityName=".MainActivity" >
             <meta-data
@@ -28,7 +28,7 @@
                 android:value="com.example.owner.anvilhackui.MainActivity" />
         </activity>
         <activity
-            android:name=".MainActivity22Activity"
+            android:name=".main_macro_screen"
             android:label="@string/title_activity_main_activity22" >
         </activity>
         <activity
